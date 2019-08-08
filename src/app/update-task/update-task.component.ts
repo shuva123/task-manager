@@ -13,6 +13,13 @@ import { RestserviceService } from '../restservice.service';
 })
 export class UpdateTaskComponent implements OnInit {
   dataSaved = false;  
+  Task:any;
+  Parent_ID:any;
+  TaskId:any;
+  Priority:any;
+  Parent_Task:any;
+  Start_Date:any;
+  End_Date:any;
   TaskForm: any;  
   taskIdUpdate = null;  
   message = null;
