@@ -1,0 +1,64 @@
+<div class="container" style="padding-top: 50px;">
+    <div> 
+          <div class="row-center">
+            <label class="col-sm-2"><b>Task:</b></label>
+            <input
+              class="col-sm-3"
+              type="text"
+              id="TaskName"
+              aria-describedby="TaskName"
+              placeholder="Task Name"
+              [(ngModel)]="Task"
+            />
+          </div>
+          <input type="hidden" id="ParentId" name="ParentId" [(ngModel)]="Parent_ID">
+          <input type="hidden" id="TaskId" name="TaskId" [(ngModel)]="TaskId">
+          <div class="row-center">
+              <label class="col-sm-2"><b>Priority:</b></label>  
+              <sub>0</sub>
+              <input type="range" id="Priority" class="custom-range col-sm-3"
+              name="Priority"  [(ngModel)]="Priority" min="0" max="30" value="15" >
+              <sub>30</sub>
+          </div>
+          <div class="row-center">
+              <label class="col-sm-2"><b>Parent Task:</b></label>
+              <input
+                class="col-sm-3"
+                type="text"
+                id="ParentTask"
+                aria-describedby="ParentTask"
+                placeholder="Parent Task"
+                [(ngModel)]="Parent_Task"
+              />
+            </div>
+            <div class="row-center">
+                <label class="col-sm-2"><b>Start Date:</b></label>
+                <input
+                  class="col-sm-3"
+                  type="date"
+                  id="StartDate"
+                  aria-describedby="StartDate"
+                  [(ngModel)]="Start_Date"
+                />
+              </div>
+              <div class="row-center">
+                  <label class="col-sm-2"><b>End Date:</b></label>
+                  <input
+                    class="col-sm-3"
+                    type="date"
+                    id="EndDate"
+                    aria-describedby="EndDate"
+                    [(ngModel)]="End_Date"
+                  />
+                </div>
+          <div class="row-center"> 
+            <button type="submit" style="margin-left: 180px;" (click)="updateTask(Task,TaskId,Parent_Task,Priority,Start_Date,End_Date,Parent_ID)" class="btn btn-info btn-sm-2">
+              Update
+            </button>
+            <span class="col-sm-2"></span>
+            <button [routerLink]="['/view-task']" class="btn btn-info btn-sm-2">
+              Cancel
+            </button>
+          </div>
+    </div>
+  </div>

@@ -1,0 +1,55 @@
+
+
+<div class="row" style="margin:10px">
+      <div class="col-sm-1">Task :</div>
+      <div class="col-md-3"> <input type="text" placeholder="Task" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+      <div class="col-sm-1">Parent Task :</div>
+      <div class="col-md-3"><input type="text" placeholder="Parent Task" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+</div>
+<div class="row" style="margin:10px">
+        <div class="col-sm-1">Priority From :</div>
+        <div class="col-md-1"> <input type="text" placeholder="Priority From" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+        <div class="col-sm-1">Priority To :</div>
+        <div class="col-md-1"><input type="text" placeholder="Priority To" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+        <div class="col-sm-1">Start Date :</div>
+        <div class="col-md-1"><input type="text" placeholder="Start Date" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+        <div class="col-sm-1">End Date :</div>
+        <div class="col-md-1"><input type="text" placeholder="End Date" class="form-control" (keyup)="applyFilter($event.target.value)"/></div>
+</div>
+
+<div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let task">{{task.Name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Parent_Task_Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Parent Task Name </th>
+      <td mat-cell *matCellDef="let task"> {{task.Parent_Task_Name}} </td>
+    </ng-container>
+
+        <ng-container matColumnDef="Priority">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
+          <td mat-cell *matCellDef="let task"> {{task.Priority}} </td>
+        </ng-container>
+
+    <ng-container matColumnDef="Start_Date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+      <td mat-cell *matCellDef="let task"> {{task.Start_Date|date}} </td>
+    </ng-container>  
+
+    <ng-container matColumnDef="End_Date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date </th>
+      <td mat-cell *matCellDef="let task"> {{task.End_Date|date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let task" class="action-link"> <button *ngIf="task.IsActive!='N'" class="btn btn-link" [routerLink]="['/update-task',task.Id]">Edit Task</button> <span *ngIf="task.IsActive!='N'">|</span> <button *ngIf="task.IsActive!='N'" class="btn btn-link btn-end" (click)="endTask(task.Id)">End Task</button></td>|
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let task; columns: displayedColumns;"></tr>
+  </table>
+</div>
