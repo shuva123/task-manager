@@ -47,7 +47,7 @@ export class UpdateTaskComponent implements OnInit {
     this.taskService.updateTask(this.TaskForm).subscribe(  
       () => {  
         this.dataSaved = true;  
-        this.message = 'Record updated Successfully';  
+        this.message = 'Record updated Successfully'; 
         alert(this.message);
         window.location.href="/view-task";
       },

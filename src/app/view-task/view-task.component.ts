@@ -51,8 +51,8 @@ export class ViewTaskComponent implements OnInit {
       };
     this.taskService.endTask(this.TaskForm).subscribe(  
       () => {  
-        this.dataSaved = true;  
-        alert('Task Ended Successfully'); 
+        this.dataSaved = true; 
+        alert('Task Ended Successfully');  
         window.location.href="/view-task"; 
       },
       error => console.error(error)
